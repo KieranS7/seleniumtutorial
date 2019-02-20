@@ -9,6 +9,7 @@ import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import uk.co.bpdts.seleniumtutorial.PageObjects.AddToBasketPageObject;
 import uk.co.bpdts.seleniumtutorial.PageObjects.AmazonHomePagePageObject;
 import uk.co.bpdts.seleniumtutorial.PageObjects.SearchResultsPageObject;
 
@@ -39,13 +40,17 @@ public class AmazonAddToBasketTest {
 
         assertThat("not on book product page", driver.getTitle(), containsString("Past Tense: (Jack Reacher 23)"));
 
+        AddToBasketPageObject addToBasket= new AddToBasketPageObject(driver);
+        addToBasket.addSpecificItemToBasket();
+
+
         /*driver.findElement(By.id("add-to-cart-button")).click();
         driver.findElement(By.cssSelector("#hlb-ptc-btn-native")).click();
         assertThat("check on signin page", driver.getTitle(), containsString("Sign In"));*/
     }
 
 
-    @After
+    //@After
     public void tearDown() {
         driver.quit();
     }

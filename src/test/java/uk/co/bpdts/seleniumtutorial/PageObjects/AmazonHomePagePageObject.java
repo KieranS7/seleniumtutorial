@@ -8,11 +8,10 @@ public class AmazonHomePagePageObject {
     private WebDriver driver;
 
 
-    public AmazonHomePagePageObject(WebDriver driver){
+    public AmazonHomePagePageObject(WebDriver driver) {
         this.driver = driver;
         //PageFactory.initElements(driver, this);
     }
-
 
 
     public SearchResultsPageObject searchForItem(String searchterm) {
@@ -20,5 +19,13 @@ public class AmazonHomePagePageObject {
         driver.findElement(By.cssSelector("#nav-search > form > div.nav-right > div > input")).click();
 
         return new SearchResultsPageObject(driver);
-}
+    }
+
+    public AddToBasketPageObject addToBasket(String addtobasket) {
+        driver.findElement(By.id("add-to-cart-button")).click();
+
+        return new AddToBasketPageObject(driver);
+    }
+
+
 }
