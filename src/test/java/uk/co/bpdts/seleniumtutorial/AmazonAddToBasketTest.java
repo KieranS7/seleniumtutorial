@@ -10,6 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import uk.co.bpdts.seleniumtutorial.PageObjects.AmazonHomePagePageObject;
+import uk.co.bpdts.seleniumtutorial.PageObjects.SearchResultsPageObject;
 
 import java.util.List;
 
@@ -27,34 +28,21 @@ public class AmazonAddToBasketTest {
         System.setProperty("webdriver.chrome.driver", this.getClass().getClassLoader().getResource("chromedriver").getPath());
         driver = new ChromeDriver();
         driver.get("https://www.amazon.co.uk");
+        driver.manage().window().maximize();
     }
 
     @Test
     public void testSearchForProductAndAddToBasket() throws InterruptedException {
-        AmazonHomePagePageObject amazonHomePagePageObject=new AmazonHomePagePageObject(driver);
-        amazonHomePagePageObject.searchForItem("Mastering Selenium WebDriver");
+        AmazonHomePagePageObject amazonHomePagePageObject = new AmazonHomePagePageObject(driver);
+        SearchResultsPageObject searchResultsPageObject = amazonHomePagePageObject.searchForItem("Lee Child");
+        searchResultsPageObject.findSpecficItemFromSearchResultsByTitle("Past Tense: (Jack Reacher 23)");
 
+        assertThat("not on book product page", driver.getTitle(), containsString("Past Tense: (Jack Reacher 23)"));
 
-
-        List<WebElement> searchResults = driver.findElements(
-                By.cssSelector("* > div > div > div > div.a-fixed-left-grid-col.a-col-right > div.a-row.a-spacing-small > div > a"));
-        //assertThat("URL is wrong",driver.getCurrentUrl(),is("https://www.amazon.co.uk/"));
-        try {
-            for (WebElement element : searchResults) {
-                if (element.getText().equals("Mastering Selenium WebDriver")) {
-                    element.click();
-                }
-            }
-        } catch (StaleElementReferenceException e) {
-            // do nothing
-        }
-        assertThat("not on book product page", driver.getTitle(), containsString("Mastering Selenium WebDriver"));
-
-        driver.findElement(By.id("add-to-cart-button")).click();
+        /*driver.findElement(By.id("add-to-cart-button")).click();
         driver.findElement(By.cssSelector("#hlb-ptc-btn-native")).click();
-        assertThat("check on signin page", driver.getTitle(), containsString("Sign In"));
+        assertThat("check on signin page", driver.getTitle(), containsString("Sign In"));*/
     }
-
 
 
     @After
