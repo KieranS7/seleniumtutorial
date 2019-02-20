@@ -9,6 +9,7 @@ import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import uk.co.bpdts.seleniumtutorial.PageObjects.AmazonHomePagePageObject;
 
 import java.util.List;
 
@@ -23,17 +24,19 @@ public class AmazonAddToBasketTest {
 
     @Before
     public void setUp() {
-        System.setProperty("webdriver.chrome.driver",this.getClass().getClassLoader().getResource("chromedriver").getPath());
+        System.setProperty("webdriver.chrome.driver", this.getClass().getClassLoader().getResource("chromedriver").getPath());
         driver = new ChromeDriver();
+        driver.get("https://www.amazon.co.uk");
     }
 
     @Test
     public void testSearchForProductAndAddToBasket() throws InterruptedException {
-        driver.get("https://www.amazon.co.uk");
-        driver.findElement(By.id("twotabsearchtextbox")).sendKeys("mastering selenium");
-        driver.findElement(By.cssSelector("#nav-search > form > div.nav-right > div > input")).click();
+        AmazonHomePagePageObject amazonHomePagePageObject=new AmazonHomePagePageObject(driver);
+        amazonHomePagePageObject.searchForItem("Mastering Selenium WebDriver");
 
-        List<WebElement> searchResults= driver.findElements(
+
+
+        List<WebElement> searchResults = driver.findElements(
                 By.cssSelector("* > div > div > div > div.a-fixed-left-grid-col.a-col-right > div.a-row.a-spacing-small > div > a"));
         //assertThat("URL is wrong",driver.getCurrentUrl(),is("https://www.amazon.co.uk/"));
         try {
@@ -42,7 +45,7 @@ public class AmazonAddToBasketTest {
                     element.click();
                 }
             }
-        } catch(StaleElementReferenceException e) {
+        } catch (StaleElementReferenceException e) {
             // do nothing
         }
         assertThat("not on book product page", driver.getTitle(), containsString("Mastering Selenium WebDriver"));
@@ -54,9 +57,7 @@ public class AmazonAddToBasketTest {
 
 
 
-
-
-    //@After
+    @After
     public void tearDown() {
         driver.quit();
     }
