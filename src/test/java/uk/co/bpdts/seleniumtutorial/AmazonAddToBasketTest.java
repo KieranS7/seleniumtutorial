@@ -6,9 +6,7 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import uk.co.bpdts.seleniumtutorial.pageobjects.ProductPagePageObject;
-import uk.co.bpdts.seleniumtutorial.pageobjects.AmazonHomePagePageObject;
-import uk.co.bpdts.seleniumtutorial.pageobjects.SearchResultsPageObject;
+import uk.co.bpdts.seleniumtutorial.pageobjects.*;
 
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.is;
@@ -27,7 +25,7 @@ public class AmazonAddToBasketTest {
         driver.manage().window().maximize();
     }
 
-    @Test
+    /*@Test
     public void testSearchForProductAndAddToBasket() throws InterruptedException {
         AmazonHomePagePageObject amazonHomePagePageObject = new AmazonHomePagePageObject(driver);
         SearchResultsPageObject searchResultsPageObject = amazonHomePagePageObject.searchForItem("Lee Child");
@@ -39,10 +37,22 @@ public class AmazonAddToBasketTest {
 
         driver.findElement(By.cssSelector("#hlb-ptc-btn-native")).click();
         assertThat("check on signin page", driver.getTitle(), containsString("Sign In"));
+    }*/
+
+    @Test
+    public void testSearchForJobsAndApply() {
+        AmazonHomePagePageObject amazonHomePagePageObject = new AmazonHomePagePageObject(driver);
+        AmazonCareersPagePageObject amazonCareersPagePageObject = amazonHomePagePageObject.clickoncareers();
+        JobListPageObject jobListPageObject = amazonCareersPagePageObject.searchforLocation("London");
+        jobListPageObject.selectingJobCategory();
+        jobListPageObject.selectingDistance();
+        jobListPageObject.selectingBusinessCategory();
+        jobListPageObject.selectingJob();
+        jobListPageObject.applyingForJob();
     }
 
 
-    @After
+    //@After
     public void tearDown() {
         driver.quit();
     }
