@@ -25,7 +25,7 @@ public class AmazonAddToBasketTest {
         driver.manage().window().maximize();
     }
 
-    /*@Test
+    //@Test
     public void testSearchForProductAndAddToBasket() throws InterruptedException {
         AmazonHomePagePageObject amazonHomePagePageObject = new AmazonHomePagePageObject(driver);
         SearchResultsPageObject searchResultsPageObject = amazonHomePagePageObject.searchForItem("Lee Child");
@@ -37,22 +37,23 @@ public class AmazonAddToBasketTest {
 
         driver.findElement(By.cssSelector("#hlb-ptc-btn-native")).click();
         assertThat("check on signin page", driver.getTitle(), containsString("Sign In"));
-    }*/
+    }
 
     @Test
     public void testSearchForJobsAndApply() {
         AmazonHomePagePageObject amazonHomePagePageObject = new AmazonHomePagePageObject(driver);
-        AmazonCareersPagePageObject amazonCareersPagePageObject = amazonHomePagePageObject.clickoncareers();
-        JobListPageObject jobListPageObject = amazonCareersPagePageObject.searchforLocation("London");
-        jobListPageObject.selectingJobCategory();
-        jobListPageObject.selectingDistance();
-        jobListPageObject.selectingBusinessCategory();
-        jobListPageObject.selectingJob();
+        AmazonCareersPagePageObject amazonCareersPagePageObject = amazonHomePagePageObject.clickOnCareers();
+        JobListPageObject jobListPageObject = amazonCareersPagePageObject.searchusingdropdown("Lon");
+
+        jobListPageObject.selectingJobCategory("Software Development");
+        jobListPageObject.selectingDistance(5);
+        jobListPageObject.selectingBusinessCategory("Prime Video");
+        jobListPageObject.selectingJob("Software Development Engineer");
         jobListPageObject.applyingForJob();
     }
 
 
-    //@After
+    @After
     public void tearDown() {
         driver.quit();
     }

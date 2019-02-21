@@ -20,7 +20,7 @@ public class AmazonHomePagePageObject {
         return new SearchResultsPageObject(driver);
     }
 
-    public AmazonCareersPagePageObject clickoncareers() {
+    public AmazonCareersPagePageObject clickOnCareers() {
         driver.findElement(By.xpath("//*[@id=\"navFooter\"]/div[1]/div/div[1]/ul/li[1]/a")).click();
         return new AmazonCareersPagePageObject(driver);
     }

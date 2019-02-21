@@ -13,30 +13,37 @@ public class JobListPageObject {
         this.driver = driver;
     }
 
-    public void selectingJobCategory() {
+    public void selectingJobCategory(String category) {
         WebDriverWait wait = new WebDriverWait(driver, 5);
-        WebElement catButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button/p[contains(text(), \"Software Development\")]/..")));
+        WebElement catButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button/p[contains(text(), \"" + category + "\")]/..")));
         catButton.click();
     }
 
-    public void selectingDistance() {
+    public void selectingDistance(int distance) {
         WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("search-content-cover")));
-        WebElement distanceButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"main-content\"]/div[3]/div/div/div[2]/content/div/div/div[1]/div/div[6]/div/fieldset/div[2]/button[1]")));
+        WebElement distanceButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(), \"" + distance +"\")]")));
         distanceButton.click();
     }
 
-    public void selectingBusinessCategory() {
+    public void selectDistanceOfFive() {
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("search-content-cover")));
+        WebElement distanceButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(), \"5\")]")));
+        distanceButton.click();
+    }
+
+    public void selectingBusinessCategory(String label) {
         WebDriverWait wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("search-content-cover")));
-        WebElement busCatButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@name='desktopFilter_business_category']//p[@class='label-text'][contains(text(),'Prime Video')]")));
+        WebElement busCatButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button/p[contains(text(), \"" + label +"\")]/..")));;
         busCatButton.click();
     }
 
-    public void selectingJob() {
+    public void selectingJob(String job) {
         WebDriverWait wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("search-content-cover")));
-        WebElement jobButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//body/div[@id='sb-site']/div[@id='main-content']/div[@class='search-page']/div[@data-react-class='SearchContent']/div[@class='search-content']/div[@class='container']/content/div[@class='search-container']/div[@class='row']/div[@class='col-md-8 search-page-job-list']/div[@class='row']/div[@class='job-tile-lists col-12']/div[4]/a[1]/div[1]")));
+        WebElement jobButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//h3[contains(text(), \""+job+"\")]/../../../..)[3]")));
         jobButton.click();
     }
     public void applyingForJob() {
