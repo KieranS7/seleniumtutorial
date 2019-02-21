@@ -1,4 +1,4 @@
-package uk.co.bpdts.seleniumtutorial.PageObjects;
+package uk.co.bpdts.seleniumtutorial.pageobjects;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;

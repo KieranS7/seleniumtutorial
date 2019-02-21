@@ -6,9 +6,9 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import uk.co.bpdts.seleniumtutorial.PageObjects.ProductPagePageObject;
-import uk.co.bpdts.seleniumtutorial.PageObjects.AmazonHomePagePageObject;
-import uk.co.bpdts.seleniumtutorial.PageObjects.SearchResultsPageObject;
+import uk.co.bpdts.seleniumtutorial.pageobjects.ProductPagePageObject;
+import uk.co.bpdts.seleniumtutorial.pageobjects.AmazonHomePagePageObject;
+import uk.co.bpdts.seleniumtutorial.pageobjects.SearchResultsPageObject;
 
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.is;
