@@ -17,7 +17,7 @@ public class SearchResultsPageObject {
     }
 
 
-    public void findSpecficItemFromSearchResultsByTitle(String specificItemTitle) {
+    public ProductPagePageObject findSpecficItemFromSearchResultsByTitle(String specificItemTitle) {
         WebDriverWait wait = new WebDriverWait(driver, 5);
         List<WebElement> searchResults = wait
                 .until(ExpectedConditions
@@ -32,7 +32,11 @@ public class SearchResultsPageObject {
         } catch (StaleElementReferenceException e) {
             // do nothing
         }
+
+        return new ProductPagePageObject(driver);
+
     }
+
 
 
 }

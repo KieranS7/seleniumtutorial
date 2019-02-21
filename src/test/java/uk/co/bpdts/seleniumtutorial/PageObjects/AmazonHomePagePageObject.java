@@ -2,7 +2,6 @@ package uk.co.bpdts.seleniumtutorial.PageObjects;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.PageFactory;
 
 public class AmazonHomePagePageObject {
     private WebDriver driver;
@@ -21,10 +20,10 @@ public class AmazonHomePagePageObject {
         return new SearchResultsPageObject(driver);
     }
 
-    public AddToBasketPageObject addToBasket(String addtobasket) {
+    public ProductPagePageObject addToBasketPageObject() {
         driver.findElement(By.id("add-to-cart-button")).click();
 
-        return new AddToBasketPageObject(driver);
+        return new ProductPagePageObject(driver);
     }
 
 

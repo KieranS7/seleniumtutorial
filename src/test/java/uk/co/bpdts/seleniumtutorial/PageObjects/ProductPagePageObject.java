@@ -3,15 +3,15 @@ package uk.co.bpdts.seleniumtutorial.PageObjects;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class AddToBasketPageObject {
+public class ProductPagePageObject {
 
     private WebDriver driver;
 
-    public AddToBasketPageObject(WebDriver driver){
+    public ProductPagePageObject(WebDriver driver){
         this.driver = driver;
     }
 
-    public void addSpecificItemToBasket(String addtobasket){
+    public void addSpecificItemToBasket(){
         driver.findElement(By.id("add-to-cart-button")).click();
     }
 }
