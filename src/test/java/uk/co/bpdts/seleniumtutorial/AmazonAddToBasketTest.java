@@ -1,5 +1,6 @@
 package uk.co.bpdts.seleniumtutorial;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -41,7 +42,7 @@ public class AmazonAddToBasketTest {
     }
 
 
-    //@After
+    @After
     public void tearDown() {
         driver.quit();
     }
