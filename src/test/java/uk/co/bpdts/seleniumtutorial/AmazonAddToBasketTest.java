@@ -37,7 +37,7 @@ public class AmazonAddToBasketTest {
 
         productPagePageObject.addSpecificItemToBasket();
 
-                driver.findElement(By.cssSelector("#hlb-ptc-btn-native")).click();
+        driver.findElement(By.cssSelector("#hlb-ptc-btn-native")).click();
         assertThat("check on signin page", driver.getTitle(), containsString("Sign In"));
     }
 

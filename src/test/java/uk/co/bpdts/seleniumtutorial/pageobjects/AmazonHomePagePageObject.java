@@ -20,11 +20,5 @@ public class AmazonHomePagePageObject {
         return new SearchResultsPageObject(driver);
     }
 
-    public ProductPagePageObject addToBasketPageObject() {
-        driver.findElement(By.id("add-to-cart-button")).click();
-
-        return new ProductPagePageObject(driver);
-    }
-
 
 }
