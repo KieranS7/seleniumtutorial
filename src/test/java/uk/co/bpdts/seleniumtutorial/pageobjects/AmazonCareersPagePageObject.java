@@ -20,18 +20,15 @@ public class AmazonCareersPagePageObject {
     public JobListPageObject searchforLocation(String locationterm) {
         WebElement locationField = driver.findElements(By.id("location-typeahead")).get(1);
         locationField.sendKeys(locationterm);
-        driver.findElement(By.id("search-button")).click();
+        WebDriverWait wait = new WebDriverWait(driver,5);
+        List<WebElement> list = wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//div[@class='tt-menu tt-open']//div[@class='tt-dataset tt-dataset-location-results']")));
+        System.out.println("total locations" + list.size());
+        for (int i = 0; i < list.size(); i++) {
+            System.out.println(list.get(i).getText());
+            if (list.get(i).getText().contains("Greater London")) {
+                list.get(i).click();
+            }
+        }
         return new JobListPageObject(driver);
-    }
-
-    public JobListPageObject searchusingdropdown(String locationdd)
-    {
-        WebElement destination = driver.findElement(By.cssSelector("location-typeahead"));
-        destination.sendKeys("lon");
-        destination.sendKeys(Keys.ARROW_DOWN);
-        destination.sendKeys(Keys.ARROW_DOWN);
-        destination.sendKeys(Keys.ARROW_DOWN);
-        destination.click();
-
     }
 }

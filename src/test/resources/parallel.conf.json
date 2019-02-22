@@ -1,0 +1,19 @@
+{
+    "server": "hub-cloud.browserstack.com",
+    "user": "kieranslater1",
+    "key": "y3n5xy8YPR7zDKhpGybY",
+
+    "capabilities": {
+    "browserstack.debug": true
+},
+
+    "environments": [{
+    "browser": "chrome"
+},{
+    "browser": "firefox"
+},{
+    "browser": "safari"
+},{
+    "browser": "internet explorer"
+}]
+}

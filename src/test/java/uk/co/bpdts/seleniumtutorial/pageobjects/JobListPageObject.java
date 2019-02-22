@@ -22,7 +22,7 @@ public class JobListPageObject {
     public void selectingDistance(int distance) {
         WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("search-content-cover")));
-        WebElement distanceButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(), \"" + distance +"\")]")));
+        WebElement distanceButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(), \"" + distance + "\")]")));
         distanceButton.click();
     }
 
@@ -34,22 +34,26 @@ public class JobListPageObject {
     }
 
     public void selectingBusinessCategory(String label) {
-        WebDriverWait wait = new WebDriverWait(driver, 5);
+        WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("search-content-cover")));
-        WebElement busCatButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button/p[contains(text(), \"" + label +"\")]/..")));;
+        WebElement busCatButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button/p[contains(text(), \"" + label + "\")]/..")));
+        ;
         busCatButton.click();
     }
 
     public void selectingJob(String job) {
-        WebDriverWait wait = new WebDriverWait(driver, 5);
+        WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("search-content-cover")));
-        WebElement jobButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//h3[contains(text(), \""+job+"\")]/../../../..)[3]")));
+        WebElement jobButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//h3[contains(text(), \"" + job + "\")]/../../../..)[3]")));
         jobButton.click();
     }
+
     public void applyingForJob() {
-        WebDriverWait wait = new WebDriverWait(driver, 5);
+        WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("search-content-cover")));
         WebElement applyButton = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#apply-button")));
         applyButton.click();
-}
+    }
+
+
 }
